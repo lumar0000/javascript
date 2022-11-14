@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somma precedenti</title>
+</head>
+<body>
+
+    <table border="1">
+        <tbody id="tbody"></tbody>
+        </table>
+
+    <button id="btnCalcola">Inserisci numeri</button>
+    <div id="risultato"></div>
+
+
+    <script>
+         document.getElementById("btnCalcola").onclick=function(){
+            let som=0;
+            let str="";
+            do {
+                var a= Number(prompt("Inserisci il numero (inserisci 0 per smettere)"));
+                if (a>som)
+                    str+=" "+a;
+                som+=a;
+            } while (isNaN(a) || a!=0);
+            
+            document.getElementById("risultato").innerHTML="I numeri maggiori della somma dei precedenti sono:" + str;
+        }
+    </script>
+
+</body>
+</html>
+
