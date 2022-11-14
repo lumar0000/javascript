@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="AlterVista - Editor HTML"/>
+  <title></title>
+  <style>
+    img {
+      max-width: 200px;
+    }
+    table {
+      font-size:2em;
+      text-align: center;
+    }
+  </style>
+
+</head>
+    <body>
+    <input type="number" id="nGatti" placeholder="numero di gatti">
+    <input type="number" id="nGatFila" placeholder="numero di gatti per fila">
+    <button onclick="gatti()">calcola gatti</button>
+
+    <table border="1">
+        <tbody id="tbody"></tbody>
+    </table>
+
+<script>
+    function gatti() {
+        let tbody = document.getElementById("tbody");
+        let tr = document.createElement("tr");
+        let td = document.createElement("td");
+            numGatti = document.getElementById("nGatti").value;
+            nGatFila = document.getElementById("nGatFila").value;
+            
+        let img=document.createElement("img");
+
+
+            let nFile = Math.ceil(numGatti/nGatFila);
+            let nRest = nGatFila - Math.ceil(numGatti%nGatFila);
+            if(nRest == nGatFila) 
+            	nRest = 0;
+
+            for(let i=1; i<nFile; i++){
+                for(let j=0; j<nGatFila; j++){
+                    td = document.createElement("td");
+                    img=document.createElement("img");
+                    img.src="pexels-kelvin-valerio-617278.jpg";//percorso img
+                    td.appendChild(img);
+                    tr.appendChild(td);
+                }
+                tbody.appendChild(tr);
+                tr = document.createElement("tr");
+            }
+
+            for(let k=1; k<nRest; k++){
+                td = document.createElement("td");
+                img=document.createElement("img");
+                img.src="pexels-kelvin-valerio-617278.jpg";//percorso img
+                td.appendChild(img);
+                tr.appendChild(td);
+            }
+            tbody.appendChild(tr);
+            tr = document.createElement("tr");
+
+
+        }
+
+</script>
+
+  <p>&nbsp;</p>
+
+</body>
+</html>
