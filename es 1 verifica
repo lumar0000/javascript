@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="AlterVista - Editor HTML"/>
+  <title></title>
+</head>
+<body>
+    <table border="1px solid rgb(0, 0, 0)">
+        <tr>
+            <td>Codice cliente</td>
+            <td><input type="number" id="codClient"></td>
+        </tr>
+        <tr>
+            <td>Kw/h consumati</td>
+            <td><input type="number" id="Kw/h"></td>
+        </tr>
+        <tr>
+            <td>Costo Kw/h</td>
+            <td><input type="number" placeholder="0.03" disabled></td>
+        </tr>
+        <tr>
+            <td>Iva</td>
+            <td><input type="number" placeholder="0.22" disabled></td>
+        </tr>
+        <tr>
+            <td>Canone</td>
+            <td><input type="number" placeholder="20" disabled></td>
+        </tr>
+        <tr>
+            <td><button onclick="inserisci()">inserisci</button></td>
+            <td><button onclick="mostra()">mostra</button></td>
+        </tr>
+    </table>
+    <br>
+    <table border="1px solid rgb(0, 0, 0)" id = "table">
+        <tHead>
+            <tr>
+                <td>Codice cliente</td>
+                <td>Consumo*Costto KWH</td>
+                <td>Canone</td>
+                <td>Iva</td>
+                <td>Totale</td>
+            </tr>
+        </tHead>
+
+    </table>
+
+    <script>
+ 
+        let table = document.getElementById("table")
+        let tbody=document.createElement("tbody");
+
+        let tr = document.createElement("tr");
+        let td = document.createElement("td");
+
+        function inserisci(){
+            let codCli = document.getElementById("codClient").value;
+            let KwH = document.getElementById("Kw/h").value;
+            if(codClient < 0 || KwH < 0)
+                alert("errore");
+            else{
+
+                let costTot = KwH*0.03;
+                let iva = 22;
+                let ivaTot = costTot * iva;
+                let tot = 20 + costTot + iva;
+
+                td.innerText = `${codCli}`;
+                tr.appendChild(td);
+                td = document.createElement("td");
+                td.innerText = `${KwH} * 0.03 = ${KwH*0.03}€`;
+                tr.appendChild(td);
+                td = document.createElement("td");
+                td.innerText = `${20}€`;
+                tr.appendChild(td);
+                td = document.createElement("td");
+                td.innerText = `${costTot} * ${iva}% = ${ivaTot.toFixed(2)}€`;
+                tr.appendChild(td);
+                td = document.createElement("td");
+                td.innerText = `${tot}€`;
+                tr.appendChild(td)
+                td = document.createElement("td");
+                tr.appendChild(td);
+                tbody.appendChild(tr);
+                tr = document.createElement("tr");
+                
+            }
+        }
+
+        function mostra(){
+            table.appendChild(tbody);
+        }
+
+
+    </script>
+
+</body>
+</html>
